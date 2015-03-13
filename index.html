@@ -11,21 +11,24 @@
     <div class="container">
 
       <div ng-controller="TodoCtrl as todos">
-        <h1>{{todos.helloWorld}}</h1>
 
         <form class="form-inline">
           <div class="form-group">
-            <label>New To Do:</label>
-            <input type="text" class="form-control" ng-model="text">
-            <button ng-click="todos.addTodo(text)" class="btn btn-primary">Submit</button>
+            <h2>
+              <label>New To Do:</label>
+            </h2>
+            <input id="todoInput" type="text" class="form-control" ng-model="text">
+            <button ng-click="todos.addTodo(text, todos.list.length)" class="btn btn-primary">Submit</button>
           </div>
         </form>
 
-        <h4 ng-repeat="todo in todos.list">
-          <button class="btn btn-xs btn-danger" ng-click="test = this">x</button>
-          {{todo.text}}
-          {{test}}
-        </h4>
+        <br>
+        <br>
+
+        <div class="well" ng-repeat="todo in todos.list">
+          <h3><button class="btn btn btn-danger" ng-click="todos.removeTodo(todo.order)">x</button>
+          {{todo.text}}</h3>
+        </div>
       </div>
 
 
